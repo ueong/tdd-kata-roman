@@ -1,24 +1,28 @@
-import java.util.Collections;
-import java.util.TreeMap;
-
 public class RomanNumber {
     private static final int MIN_VALUE = 1;
     private static final int MAX_VALUE = 3999;
-    private static final TreeMap<Integer, String> symbolMap = new TreeMap<>(Collections.reverseOrder()) {{
-        put(1, "I");
-        put(4, "IV");
-        put(5, "V");
-        put(9, "IX");
-        put(10, "X");
-        put(40, "XL");
-        put(50, "L");
-        put(90, "XC");
-        put(100, "C");
-        put(400, "CD");
-        put(500, "D");
-        put(900, "CM");
-        put(1000, "M");
-    }};
+    private enum RomanSymbol {
+        M(1000),
+        CM(900),
+        D(500),
+        CD(400),
+        C(100),
+        XC(90),
+        L(50),
+        XL(40),
+        X(10),
+        IX(9),
+        V(5),
+        IV(4),
+        I(1);
+        private final int value;
+        RomanSymbol(final int value) {
+            this.value = value;
+        }
+        public int value() {
+            return this.value;
+        }
+    }
     private final String romanNumber;
     private final int decimalNumber;
     public RomanNumber(int decimalNumber) {
@@ -36,10 +40,10 @@ public class RomanNumber {
     private String toRomanNumber(int decimalNumber) {
         StringBuilder sb = new StringBuilder();
         int remaining = decimalNumber;
-        for(int symbolValue : symbolMap.keySet()) {
-            while(remaining >= symbolValue) {
-                sb.append(symbolMap.get(symbolValue));
-                remaining -= symbolValue;
+        for(RomanSymbol symbol : RomanSymbol.values()) {
+            while(remaining >= symbol.value()) {
+                sb.append(symbol.name());
+                remaining -= symbol.value();
             }
         }
         return sb.toString();
