@@ -15,7 +15,6 @@ System.out.println(four.value()); // IV
 RomanNumber ninetyNine = new RomanNumber(99);
 System.out.println(ninetyNine.value()); // XCIX
 
-
 RomanNumber eightHundredSeventySix = new RomanNumber(876);
 System.out.println(eightHundredSeventySix.value()); // DCCCLXXVI
 ```
