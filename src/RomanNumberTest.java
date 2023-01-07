@@ -42,6 +42,50 @@ public class RomanNumberTest {
         new RomanNumber(4000);
     }
 
+    @Test
+    public void romanNumberPlusTest() {
+        RomanNumber result = new RomanNumber(12).plus(new RomanNumber(3));
+        assertEquals("XV", result.value());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void romanNumberPlusResultShouldThrowIllegalArgumentExceptionWhenResultIsLargerThen4000() {
+        new RomanNumber(3999).plus(new RomanNumber(1));
+    }
+
+    @Test
+    public void romanNumberMinusTest() {
+        RomanNumber result = new RomanNumber(12).minus(new RomanNumber(3));
+        assertEquals("IX", result.value());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void romanNumberMinusResultShouldThrowIllegalArgumentExceptionWhenResultIsBelowZero() {
+        new RomanNumber(12).minus(new RomanNumber(12));
+    }
+
+    @Test
+    public void romanNumberMultiplyTest() {
+        RomanNumber result = new RomanNumber(12).multiply(new RomanNumber(3));
+        assertEquals("XXXVI", result.value());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void romanNumberMultiplyResultShouldThrowIllegalArgumentExceptionWhenResultIsLargerThen4000() {
+        new RomanNumber(2000).plus(new RomanNumber(2000));
+    }
+
+    @Test
+    public void romanNumberDivideTest() {
+        RomanNumber result = new RomanNumber(12).divide(new RomanNumber(3));
+        assertEquals("IV", result.value());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void romanNumberDivideResultShouldThrowIllegalArgumentExceptionWhenCannotDividedBy() {
+        new RomanNumber(5).divide(new RomanNumber(3));
+    }
+
     private void testRomanNumberValue(int decimalNumber, String romanNumberString) {
         RomanNumber romanNumber = new RomanNumber(decimalNumber);
         assertEquals(romanNumberString, romanNumber.value());

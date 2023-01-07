@@ -20,9 +20,11 @@ public class RomanNumber {
         put(1000, "M");
     }};
     private final String romanNumber;
+    private final int decimalNumber;
     public RomanNumber(int decimalNumber) {
         this.validate(decimalNumber);
         this.romanNumber = toRomanNumber(decimalNumber);
+        this.decimalNumber = decimalNumber;
     }
 
     private void validate(int decimalNumber) {
@@ -42,7 +44,29 @@ public class RomanNumber {
         }
         return sb.toString();
     }
+    public int decimalValue() {
+        return this.decimalNumber;
+    }
     public String value() {
         return this.romanNumber;
+    }
+
+    public RomanNumber plus(RomanNumber romanNumber) {
+        return new RomanNumber(this.decimalNumber + romanNumber.decimalValue());
+    }
+
+    public RomanNumber minus(RomanNumber romanNumber) {
+        return new RomanNumber(this.decimalNumber - romanNumber.decimalValue());
+    }
+
+    public RomanNumber multiply(RomanNumber romanNumber) {
+        return new RomanNumber(this.decimalNumber * romanNumber.decimalValue());
+    }
+
+    public RomanNumber divide(RomanNumber romanNumber) {
+        if (this.decimalNumber % romanNumber.decimalValue() != 0) {
+            throw new IllegalArgumentException("나누어 떨어지지 않습니다.");
+        }
+        return new RomanNumber(this.decimalNumber / romanNumber.decimalValue());
     }
 }
