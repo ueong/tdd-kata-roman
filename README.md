@@ -10,14 +10,13 @@
 
 ```java
 RomanNumber four = new RomanNumber(4);
-        System.out.println(four.value()); // IV
+System.out.println(four.value()); // IV
 
-        RomanNumber ninetyNine = new RomanNumber(99);
-        System.out.println(ninetyNine.value()); // XCIX
+RomanNumber ninetyNine = new RomanNumber(99);
+System.out.println(ninetyNine.value()); // XCIX
 
-
-        RomanNumber eightHundredSeventySix = new RomanNumber(876);
-        System.out.println(eightHundredSeventySix.value()); // DCCCLXXVI
+RomanNumber eightHundredSeventySix = new RomanNumber(876);
+System.out.println(eightHundredSeventySix.value()); // DCCCLXXVI
 ```
 
 로마 숫자는 다음과 같이 정의됩니다.
